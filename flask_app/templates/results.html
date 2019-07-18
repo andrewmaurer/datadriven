@@ -1,0 +1,82 @@
+<h1>
+    Your safety results
+</h1>
+
+{% if svm_pred == -1 and kde_pred < 35.87117741889825    %}
+    <font color="green"><h2>Brand new drivers, you're safe to drive!</h2></font>
+{% endif %}
+
+{% if svm_pred == 1 or kde_pred > 35.87117741889825 %}
+    <font color="red"><h2>Brand new drivers, not safe to drive!</h2></font>
+    ({% if svm_pred == 1 %}
+        There is an elevated risk of fatal collisions.
+    {% endif %}
+    {% if kde_pred > 35.87117741889825 %}
+        There is an elevated risk of nonfatal collisions.
+    {% endif %})
+    </font>
+{% endif %}
+
+
+
+{% if svm_pred == -1 and kde_pred < 36.430793206897    %}
+    <font color="green"><h2>Drivers with a little experience, you're safe to drive!</h2></font>
+{% endif %}
+
+{% if svm_pred == 1 or kde_pred > 36.430793206897 %}
+    <font color="red"><h2>Drivers with a little experience, not safe to drive!</h2></font>
+    ({% if svm_pred == 1 %}
+        There is an elevated risk of fatal collisions.
+    {% endif %}
+    {% if kde_pred > 36.430793206897 %}
+        There is an elevated risk of nonfatal collisions.
+    {% endif %})
+    </font>
+{% endif %}
+
+
+{% if svm_pred == -1 %}
+    <font color="green"><h2>License-ready drivers are safe to drive!</h2></font>
+{% endif %}
+
+{% if svm_pred == 1 %}
+    <font color="red"><h2>License-ready drivers, not safe to drive!</h2></font>
+    (There is an elevated risk of fatal collisions.)
+{% endif %}
+<br><br><br><br>
+<h1>Safety Suggestions</h1>
+
+<h2>Safer time</h2>
+
+{% if better_hour == -1 %}
+    Changing the time won't increase the safety
+{% endif %}
+
+{% if better_hour != -1 %}
+    It would be a safer bet to drive at {{ better_hour }}.
+{% endif %}
+
+<h2>Safer Day</h2>
+
+{% if better_day == -1 %}
+    Changing the day won't increase the safety.
+{% endif %}
+
+{% if better_day != -1 %}
+    A safer day would be {{ better_day }}.
+{% endif %}
+
+
+<h2>Safer Neighborhood</h2>
+
+{% if better_nbhd == -1 %}
+    Changing the neighborhood won't increase the safety.
+{% endif %}
+
+{% if better_nbhd != -1 %}
+    It would be safer to go for a drive in {{better_nbhd}}.
+{% endif %}
+<br><br><br><br>
+<h4>Nerd stuff</h4>
+
+SVM Pred: {{ svm_pred }}, KDE Pred: {{ kde_pred }}

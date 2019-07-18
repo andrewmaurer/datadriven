@@ -1,0 +1,36 @@
+<title>Data Driven</title>
+
+<h1>
+    Welcome to <em>Data-Driven</em>
+</h1>
+<h2>
+When are we driving?
+</h2>
+  <form action="{{url_for('results')}}" method="post" novalidate>
+      {{ form.hidden_tag() }}
+      <p>
+          {{ form.weekday.label }}<br>
+          {{ form.weekday }}
+      </p>
+      <p>
+          {{ form.time.label }}<br>
+          {{ form.time }}
+      </p>
+      <p>
+          {{ form.weather.label }}<br>
+          {{ form.weather }}
+      </p>
+      <p>
+          {{ form.nbhd.label }}<br>
+          {{ form.nbhd }}
+      </p>
+      <p>{{ form.submit() }}</p>
+
+      <img src="{{url_for('static', filename="by_hour.png")}}"/>
+      <img src="{{url_for('static', filename="by_day.png")}}"/>
+      <p>
+      In general, mornings and mid-day are the safest times and Tuesdays are the safest day.
+
+      <br>
+
+  </form>
